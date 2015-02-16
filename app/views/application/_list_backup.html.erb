@@ -1,0 +1,37 @@
+<div class="resultdisplay" ng-controller="eventController"> <!--Event Controller To add event to Rails Database-->
+<ul >
+   <li ng-repeat="business in businesses">
+    <div class="list_outerbox">
+      <div class="list_index">
+       {{ $index + 1 }}.
+      </div>  
+      <div class="list_content">
+        <div class="inner_col">
+          <div class="business_name">
+              <span>{{business.name }}</span> 
+          </div>
+          <div class="business_meta">
+            <div class="rate"> {{business.rating }} </div>
+              <div class="business_data">
+                <div class="address">{{ business.location.address[0] }}</div>
+                <div class="category">{{ business.categories[0][0] }}</div>
+            </div>                     
+          </div> 
+          <div class="result_footer"></div>
+        </div>
+        <div class="business_photo">
+          <img class="img-rounded" src="{{business.image_url}}" alt="{{business.name}}" >
+        </div>
+      </div>     
+    </div>
+
+      <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Event</button>
+      <div collapse="isCollapsed" style="width: 380px; height:230px;">
+          <%= render partial: "add_event"%>
+       </div> 
+   </li>
+  </ul>
+</div>
+
+
+
